@@ -31,9 +31,12 @@
 
 	td {
 		padding: 20px;
-		min-width: 100px;
-		min-height: 300px;
+		width: 120px;
 		border: 1px solid #e0e5f6;
+	}
+	
+	p {
+		text-align: center;
 	}
 	</style>
 </head>
@@ -66,15 +69,17 @@ try {
 } catch (SQLException e) {
 	out.println(e);
 } 
+
 %>
-<h1>[<%=name%>]</h1>
-<table cellspacing=1 width=600 border=1>
+<h1><%=name%></h1>
+
+<table>
 	<tr>
-		<th width=30><p align=center>이름</p></th>
-		<th width=30><p align=center>학번</p></th>
-		<th width=30><p align=center>국어</p></th>
-		<th width=30><p align=center>영어</p></th>
-		<th width=30><p align=center>수학</p></th>
+		<th><p>이름</p></th>
+		<th><p>학번</p></th>
+		<th><p>국어</p></th>
+		<th><p>영어</p></th>
+		<th><p>수학</p></th>
 	</tr>
 <%
  try {
