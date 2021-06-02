@@ -25,15 +25,23 @@
 
 	th {
 		color: white;
-		height: 80px;
+		height: 60px;
 		background-color: #6807f9;
 	}
 
 	td {
 		padding: 20px;
 		min-width: 100px;
-		min-height: 300px;
+		height: 40px;
 		border: 1px solid #e0e5f6;
+	}
+	
+	tr {
+		height: 40px;
+	}
+	
+	p {
+		text-align: center;
 	}
 	</style>
 </head>
@@ -68,22 +76,22 @@ try {
 %>
 <table cellspacing=1 width=600 border=1>
 	<tr>
-		<th width=30><p align=center>이름</p></th>
-		<th width=30><p align=center>학번</p></th>
-		<th width=30><p align=center>국어</p></th>
-		<th width=30><p align=center>영어</p></th>
-		<th width=30><p align=center>수학</p></th>
+		<th width=30><p>이름</p></th>
+		<th width=30><p>학번</p></th>
+		<th width=30><p>국어</p></th>
+		<th width=30><p>영어</p></th>
+		<th width=30><p>수학</p></th>
 	</tr>
 <%
  try {
 	while (rset.next()) { 
 	
 		out.println("<tr>");
-	    out.println("<td width=50><p align=center><a href='oneview.jsp?name="+rset.getString(1)+"&studentid="+rset.getInt(2)+"'>"+rset.getString(1)+"</a></p></td>");
-	    out.println("<td width=50><p align=center>"+Integer.toString(rset.getInt(2))+"</p></td>");
-	    out.println("<td width=50><p align=center>"+Integer.toString(rset.getInt(3))+"</p></td>");
-	    out.println("<td width=50><p align=center>"+Integer.toString(rset.getInt(4))+"</p></td>");
-	    out.println("<td width=50><p align=center>"+Integer.toString(rset.getInt(5))+"</p></td>");
+	    out.println("<td><p><a href='oneview.jsp?name="+rset.getString(1)+"&studentid="+rset.getInt(2)+"'>"+rset.getString(1)+"</a></p></td>");
+	    out.println("<td><p>"+Integer.toString(rset.getInt(2))+"</p></td>");
+	    out.println("<td><p>"+Integer.toString(rset.getInt(3))+"</p></td>");
+	    out.println("<td><p>"+Integer.toString(rset.getInt(4))+"</p></td>");
+	    out.println("<td><p>"+Integer.toString(rset.getInt(5))+"</p></td>");
 	    out.println("</tr>");
 	  }
 } catch (SQLException e) {
