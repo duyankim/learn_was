@@ -73,30 +73,27 @@ try {
 
 String cTmp = request.getParameter("name");
 
-if (cTmp.length > 20) {
-	out.println("<h3>이름의 길이는 20자가 최대입니다.</h3>");
-} else {
-	String cTmpHan = new String(cTmp.getBytes("8859_1"), "utf-8");
+String cTmpHan = new String(cTmp.getBytes("8859_1"), "utf-8");
 
-	String sql = "update examtable set " +
-		"name = '" + cTmpHan + "', " +
-		"kor = " + request.getParameter("korean") + ", " +
-		"eng = " + request.getParameter("english") + ", " +
-		"mat = " + request.getParameter("math") +
-		" where studentid = " + request.getParameter("studentid");
-	try {
-		stmt.executeUpdate(sql);
-	} catch (SQLException e) {
-		out.println(e);
-	}
+String sql = "update examtable set " +
+	"name = '" + cTmpHan + "', " +
+	"kor = " + request.getParameter("korean") + ", " +
+	"eng = " + request.getParameter("english") + ", " +
+	"mat = " + request.getParameter("math") +
+	" where studentid = " + request.getParameter("studentid");
 
-	 ResultSet rset = null;
-	try {
-		rset = stmt.executeQuery("select * from examtable;");
-	} catch (SQLException e) {
-		out.println(e);
-	} 
+try {
+	stmt.executeUpdate(sql);
+} catch (SQLException e) {
+	out.println(e);
 }
+
+ ResultSet rset = null;
+try {
+	rset = stmt.executeQuery("select * from examtable;");
+} catch (SQLException e) {
+	out.println(e);
+} 
 
 %> 
 <table>
@@ -108,7 +105,7 @@ if (cTmp.length > 20) {
 		<th><p>수학</p></th>
 	</tr>
 <%
- if (cTmp.length <= 20) {
+ if (cTmp.length() <= 20) {
 	try {
 		 String name = "";
 		 String studentid, kor, eng, mat;
