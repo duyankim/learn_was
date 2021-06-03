@@ -88,6 +88,17 @@
 		text-align: center;
 		font-size: 14px;
 		font-family: 'Noto Sans KR', sans-serif;
+		width: 200px;
+	}
+	
+	#viewBtn {
+		width: 50px;
+	}
+	
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	  -webkit-appearance: none;
+	  margin: 0;
 	}
 	
 	.borderNone {
@@ -105,7 +116,7 @@
 					<input type='text' 
 					name='searchid'
 					id="stuidInput">
-					<input type='submit' value='조회' 
+					<input type='submit' value='조회' id='viewBtn' 
 					onclick='checkValidNum(document.inputForm2.searchid, event); checkValidName(document.inputForm2.name, event)'>
 				</p></td>
 			</tr>
