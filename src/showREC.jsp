@@ -30,20 +30,23 @@
 		
 	function checkValidName(txt, event) {
 		let str = txt.value;
-		console.log(str);
 		const regex = new RegExp(/^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/);
-		console.log(regex.test(str));
 		
 		if (str == "") {
 			txt.focus();
 			alert('값을 입력해주세요!');
 			event.preventDefault();
-		} 
-		if (str.length > 20) {
+		} else if (!regex.test(str)) {
+			txt.focus();
+			alert('한글 또는 영어만 입력해주세요!');
+			event.preventDefault(); 
+		} else if (str.length > 20) {
 			txt.focus();
 			alert('20자 이하만 입력 가능합니다!');
 			event.preventDefault(); 
-		};
+		} else if (regex.test(str) && str.length < 20) {
+			submitForm('update');
+		}
 	};
 </script>
 <title>Insert title here</title>
@@ -110,8 +113,19 @@
 		background-color: #e8ebf8;
 		border: none;
 		height: 30px;
+		width: 200px;
 		font-size: 14px;
 		text-align: center;
+	}
+	
+	#viewBtn {
+		width: 50px;
+	}
+	
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	  -webkit-appearance: none;
+	  margin: 0;
 	}
 	</style>
 </head>
@@ -183,14 +197,14 @@ try {
 } 
 %> 
 	<h1>성적 조회후 정정 / 삭제</h1>
-	<form action="showREC.jsp" method="post" name="showRecForm">
+	<form action="showREC.jsp" method="post" name="showRecForm1">
 		<table id="searchTable">
 			<tr>
 				<th><p>조회할 학번</p></th>
 				<td><p>
 					<input type='text' name='searchid' id="stuidInput">
-					<input type='submit' value='조회' 
-					onclick='checkValidId(document.inputForm2.searchid, event)'>
+					<input type='submit' value='조회' id="viewBtn"
+					onclick='checkValidId(document.showRecForm1.searchid, event)'>
 				</p></td>
 			</tr>
 		</table>
@@ -200,28 +214,29 @@ try {
 		<table>
 			<tr>
 				<th><p>이름</p></th>
-				<td><p><input type='te0xt' name='stuName' value='<%=name%>'></p></td>
+				<td><p><input type='text' name='name' value='<%=name%>'></p></td>
 			</tr>
 			<tr>
 				<th><p>학번</p></th>
-				<td><p><input type='text' name='studentid' readonly value='<%=studentid%>'</p></td>
+				<td><p><input type='text' name='studentid' readonly value='<%=studentid%>'></p></td>
 			</tr>
 			<tr>
 				<th><p>국어</p></th>
-				<td><p><input type='number' min='0' max='100'  name='korean' value='<%=kor%>'</p></td>
+				<td><p><input type='number' min='0' max='100'  name='korean' value='<%=kor%>'></p></td>
 			</tr>
 			<tr>
 				<th><p>영어</p></th>
-				<td><p><input type='number' min='0' max='100'  name='english' value='<%=eng%>'</p></td>
+				<td><p><input type='number' min='0' max='100'  name='english' value='<%=eng%>'></p></td>
 			</tr>
 			<tr>
 				<th><p>수학</p></th>
-				<td><p><input type='number' min='0' max='100'  name='math' value='<%=mat%>'</p></td>
+				<td><p><input type='number' min='0' max='100'  name='math' value='<%=mat%>'></p></td>
 			</tr>
 		</table>
 <%
 	if(studentid.length() != 0) {
-		out.println("<input type=button value='수정' class='btn' onclick=\"checkValidName(document.showRecForm.stuName, event); submitForm('update')\" >");
+		out.println("<input type='button' value='수정' class='btn' "+
+		"onclick='checkValidName(document.myform.name, event)' >");
 		out.println("<input type=button value='삭제' onclick=\"submitForm('delete')\" class='btn'>");
 	}
 %>
