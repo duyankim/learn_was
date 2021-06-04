@@ -4,41 +4,8 @@
 
 <html>
 <head>
-	<title>Insert title here</title>
-	<style>
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
-	body {
-		box-sizing: border-box;
-	}
-	
-	h1 {
-		font-family: 'Noto Sans KR', sans-serif;
-		color: #6807f9;
-	}
-
-	table {
-		border-collapse: collapse;
-		background-color: white;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-
-	th {
-		color: white;
-		height: 80px;
-		background-color: #6807f9;
-	}
-
-	td {
-		padding: 20px;
-		width: 120px;
-		border: 1px solid #e0e5f6;
-	}
-	
-	p {
-		text-align: center;
-	}
-	</style>
+	<title>oneview.jsp</title>
+	<link rel="stylesheet" href="./styles/tableStyle.css">
 </head>
 <body>
 <%

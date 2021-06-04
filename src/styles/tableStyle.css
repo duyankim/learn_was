@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+body {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #6807f9;
+}
+
+table {
+    border-collapse: collapse;
+    background-color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+th {
+    color: white;
+    height: 50px;
+    background-color: #6807f9;
+    width: 120px;
+}
+
+td {
+    padding: 20px;
+    width: 300px;
+    min-height: 300px;
+    border: 1px solid #e0e5f6;
+}
+
+.readonly {
+    background-color: #e8ebf8;
+}
+
+p {
+    text-align: center;
+}
+
+input {
+    background-color: #e8ebf8;
+    border: none;
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Noto Sans KR', sans-serif;
+	width: 200px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.btn {
+    background-color: #6807f9;
+    border-radius: 10%;
+    color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font: 20px;
+    width: 70px;
+    height: 40px;
+    margin-top: 20px;
+}
+
+#result {
+   background-color: #e8ebf8;
+}
+ 
+#searchTable {
+    border-collapse: collapse;
+    border-bottom: none;
+    background-color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+  
+#viewBtn {
+    width: 50px;
+}
+    
+.borderNone {
+    border-top: none;
+}

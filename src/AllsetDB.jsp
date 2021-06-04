@@ -4,14 +4,9 @@
 
 <html>
 <head>
-<title>Insert title here</title>
+<title>AllsetDB.jsp</title>
 </head>
-<style>
-	h1 {
-		font-family: 'Noto Sans KR', sans-serif;
-		color: #6807f9;
-	}
-</style>
+	<link rel="stylesheet" href="./styles/tableStyle.css">
 <body>
 <h1>실습데이터 입력</h1>
 <%

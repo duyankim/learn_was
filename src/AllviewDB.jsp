@@ -4,46 +4,8 @@
 
 <html>
 <head>
-<title>Insert title here</title>
-	<style>
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
-	body {
-		box-sizing: border-box;
-	}
-	
-	h1 {
-		font-family: 'Noto Sans KR', sans-serif;
-		color: #6807f9;
-	}
-
-	table {
-		border-collapse: collapse;
-		background-color: white;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-
-	th {
-		color: white;
-		height: 60px;
-		background-color: #6807f9;
-	}
-
-	td {
-		padding: 20px;
-		min-width: 100px;
-		height: 40px;
-		border: 1px solid #e0e5f6;
-	}
-	
-	tr {
-		height: 40px;
-	}
-	
-	p {
-		text-align: center;
-	}
-	</style>
+<title>AllviewDB.jsp</title>
+	<link rel="stylesheet" href="./styles/tableStyle.css">
 </head>
 <body>
 <h1>조회</h1>
@@ -74,20 +36,22 @@ try {
 	e.printStackTrace();
 } 
 %>
-<table cellspacing=1 width=600 border=1>
+<table>
 	<tr>
-		<th width=30><p>이름</p></th>
-		<th width=30><p>학번</p></th>
-		<th width=30><p>국어</p></th>
-		<th width=30><p>영어</p></th>
-		<th width=30><p>수학</p></th>
+		<th><p>이름</p></th>
+		<th><p>학번</p></th>
+		<th><p>국어</p></th>
+		<th><p>영어</p></th>
+		<th><p>수학</p></th>
 	</tr>
 <%
  try {
 	while (rset.next()) { 
 	
 		out.println("<tr>");
-	    out.println("<td><p><a href='oneview.jsp?name="+rset.getString(1)+"&studentid="+rset.getInt(2)+"'>"+rset.getString(1)+"</a></p></td>");
+	    out.println("<td><p><a href='oneview.jsp?name="+rset.getString(1)+"&studentid="+rset.getInt(2)+"'>"
+					+rset.getString(1)
+					+"</a></p></td>");
 	    out.println("<td><p>"+Integer.toString(rset.getInt(2))+"</p></td>");
 	    out.println("<td><p>"+Integer.toString(rset.getInt(3))+"</p></td>");
 	    out.println("<td><p>"+Integer.toString(rset.getInt(4))+"</p></td>");

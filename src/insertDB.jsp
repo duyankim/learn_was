@@ -4,69 +4,9 @@
 
 <html>
 <head>
-<title>Insert title here</title>
-<script>
-	console.log("insertDB.jsp");
-</script>
+	<title>insertDB.jsp</title>
+	<link rel="stylesheet" href="./styles/tableStyle.css">
 </head>
-	<style>
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
-	body {
-		box-sizing: border-box;
-	}
-	
-	h1 {
-		font-family: 'Noto Sans KR', sans-serif;
-		color: #6807f9;
-	}
-
-	table {
-		border-collapse: collapse;
-		background-color: white;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-
-	th {
-		color: white;
-		height: 50px;
-		background-color: #6807f9;
-		width: 120px;
-	}
-
-	td {
-		padding: 20px;
-		width: 300px;
-		min-height: 300px;
-		border: 1px solid #e0e5f6;
-		background-color: #e8ebf8;
-	}
-	
-	p {
-		text-align: center;
-	}
-	
-	input {
-		background-color: #e8ebf8;
-		border: none;
-		height: 30px;
-		text-align: center;
-		font-size: 14px;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	
-	.btn {
-		background-color: #6807f9;
-		border-radius: 10%;
-		color: #ffffff;
-		font-family: 'Noto Sans KR', sans-serif;
-		font: 20px;
-		width: 70px;
-		height: 40px;
-		margin-top: 20px;
-		margin-left: 390px;
-	}
-	</style>
 <body>
 <%
 try {
@@ -104,8 +44,9 @@ try {
 				+ request.getParameter("math") + ");" );
 } catch (SQLException e) {
 	try {
-		rset = stmt.executeQuery("select min(studentid) from examtable" + " where studentid+1 " + 
-			"not in (select studentid from examtable);");
+		rset = stmt.executeQuery("select min(studentid) from examtable" 
+			+ " where studentid+1 " 
+			+ "not in (select studentid from examtable);");
 			
 			try {
 				while (rset.next()) { 
@@ -134,23 +75,33 @@ try {
 		<table>
 			<tr>
 				<th><p>이름</p></th>
-				<td><p><input type='text' name='name' value='<%=cTmpHan%>' readonly></p></td>
+				<td class="readonly">
+					<p><input type='text' name='name' value='<%=cTmpHan%>' readonly></p>
+				</td>
 			</tr>
 			<tr>
 				<th><p>학번</p></th>
-				<td><p><input type='text' name='studentid' value='<%=Integer.toString(NewStdId)%>' readonly></p></td>
+				<td class="readonly">
+					<p><input type='text' name='studentid' value='<%=Integer.toString(NewStdId)%>' readonly></p>
+				</td>
 			</tr>
 			<tr>
 				<th><p>국어</p></th>
-				<td><p><input type='text' name='korean' value='<%=request.getParameter("korean")%>' readonly></p></td>
+				<td class="readonly">
+					<p><input type='text' name='korean' value='<%=request.getParameter("korean")%>' readonly></p>
+				</td>
 			</tr>
 			<tr>
 				<th><p>영어</p></th>
-				<td><p><input type='text' name='english' value='<%=request.getParameter("english")%>' readonly></p></td>
+				<td class="readonly">
+					<p><input type='text' name='english' value='<%=request.getParameter("english")%>' readonly></p>
+				</td>
 			</tr>
 			<tr>
 				<th><p>수학</p></th>
-				<td><p><input type='text' name='math' value='<%=request.getParameter("math")%>' readonly></p></td>
+				<td class="readonly">
+					<p><input type='text' name='math' value='<%=request.getParameter("math")%>' readonly></p>
+				</td>
 			</tr>
 		</table>
 		<input type="submit" value="뒤로가기" class="btn">

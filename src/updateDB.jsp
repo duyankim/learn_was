@@ -3,53 +3,11 @@
 <%@ page import = "java.sql.*, javax.sql.*, java.io.*, java.net.*" %>
 <html>
 <head>
-<title>Insert title here</title>
-	<script>
-		console.log("updateDB.jsp");
-	</script>
-	<style>
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
-	body {
-		box-sizing: border-box;
-	}
-	
-	h1 {
-		font-family: 'Noto Sans KR', sans-serif;
-		color: #6807f9;
-	}
-
-	table {
-		border-collapse: collapse;
-		background-color: white;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-
-	th {
-		color: white;
-		height: 80px;
-		background-color: #6807f9;
-		width: 120px;
-	}
-
-	td {
-		padding: 20px;
-		min-width: 100px;
-		min-height: 300px;
-		border: 1px solid #e0e5f6;
-	}
-	
-	p {
-		text-align: center;
-	}
-	
-	#result {
-		background-color: #e8ebf8;;
-	}
-	</style>
+	<title>updateDB.jsp</title>
+	<link rel="stylesheet" href="./styles/tableStyle.css">
 </head>
 <body>
-<h1>레코드 수정</h1>
+	<h1>레코드 수정</h1>
 <%
 try {
 	Class.forName("com.mysql.cj.jdbc.Driver");

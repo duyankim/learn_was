@@ -3,108 +3,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Insert title here</title>
-	<script>
-		console.log("inputForm2.html");
-		function checkValidNum(txt, event) {
-			let numbers = /^[0-9]+$/;
-			if (txt.value == "") {
-				txt.focus();
-				alert('값을 입력해주세요!');
-				event.preventDefault(); 
-			} else if (!txt.value.match(numbers)){
-				txt.focus();
-				alert('숫자를 입력해주세요!');
-				event.preventDefault(); 
-			} 
-		};
-		function checkValidName(txt, event) {
-			let reg = /^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/;
-			if (txt.value == "") {
-
-			} else if (!txt.value.match(reg)){
-				txt.focus();
-				alert('한글 또는 영어를 입력해주세요!');
-				event.preventDefault(); 
-			} 
-			if (txt.value.length > 20) {
-				txt.focus();
-				alert('20자 이하만 입력 가능합니다!');
-				event.preventDefault(); 
-			};
-		};
-	</script>
-	<style>
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
-	body {
-		box-sizing: border-box;
-	}
-	
-	h1 {
-		font-family: 'Noto Sans KR', sans-serif;
-		color: #6807f9;
-	}
-	
-	#searchTable {
-		border-collapse: collapse;
-		border-bottom: none;
-		background-color: white;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	
-	input[type="submit"] {
-		margin-left: 20px;
-	}
-
-	table {
-		border-collapse: collapse;
-		background-color: white;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-
-	th {
-		color: white;
-		height: 50px;
-		background-color: #6807f9;
-		width: 120px;
-	}
-
-	td {
-		padding: 20px;
-		width: 300px;
-		min-height: 300px;
-		border: 1px solid #e0e5f6;
-	}
-	
-	p {
-		text-align: center;
-	}
-	
-	input {
-		background-color: #e8ebf8;
-		border: none;
-		height: 30px;
-		text-align: center;
-		font-size: 14px;
-		font-family: 'Noto Sans KR', sans-serif;
-		width: 200px;
-	}
-	
-	#viewBtn {
-		width: 50px;
-	}
-	
-	input::-webkit-outer-spin-button,
-	input::-webkit-inner-spin-button {
-	  -webkit-appearance: none;
-	  margin: 0;
-	}
-	
-	.borderNone {
-		border-top: none;
-	}
-	</style>
+	<title>inputForm2.html</title>
+	<link rel="stylesheet" href="./styles/tableStyle.css">
 </head>
 <body>
     <h1>성적입력추가</h1>
@@ -114,10 +14,12 @@
 				<th><p>조회할 학번</p></th>
 				<td><p>
 					<input type='text' 
-					name='searchid'
-					id="stuidInput">
-					<input type='submit' value='조회' id='viewBtn' 
-					onclick='checkValidNum(document.inputForm2.searchid, event); checkValidName(document.inputForm2.name, event)'>
+					       name='searchid'
+					       id="stuidInput">
+					<input type='submit' 
+					       value='조회' 
+						   id='viewBtn' 
+					       onclick='checkId(document.inputForm2.searchid, event);'>
 				</p></td>
 			</tr>
 		</table>
@@ -149,5 +51,6 @@
 			</tr>
 		</table>
 	</form>
+	<script src="./script/form.js"></script>
 </body>
 </html>
