@@ -6,14 +6,9 @@
 <head>
 <title>Insert title here</title>
 </head>
-	<style>
-	h1 {
-		font-family: 'Noto Sans KR', sans-serif;
-		color: #6807f9;
-	}
-	</style>
+	<link rel="stylesheet" href="../styles/tableStyle.css">
 <body>
-<h1>테이블 지우기 OK</h1>
+<h1>테이블만들기 OK</h1>
 <%
 try {
 	Class.forName("com.mysql.cj.jdbc.Driver");
@@ -31,9 +26,14 @@ try {
  Statement stmt = null;
 try {
 	stmt = conn.createStatement();
-	stmt.execute("DROP TABLE examtable;");
-} catch (SQLException e1) {
-	e1.printStackTrace();
+	stmt.execute("create table examtable("+
+		"name varchar(20),"+
+		"studentid int not null primary key,"+
+		"kor int,"+
+		"eng int,"+
+		"mat int) DEFAULT CHARSET=utf8;");
+} catch (SQLSyntaxErrorException e1) {
+	out.println("<h3>테이블이 이미 있습니다.</h3>");
 } 
 
  try {

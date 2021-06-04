@@ -6,7 +6,7 @@
 <head>
 <title>AllsetDB.jsp</title>
 </head>
-	<link rel="stylesheet" href="./styles/tableStyle.css">
+	<link rel="stylesheet" href="../styles/tableStyle.css">
 <body>
 <h1>실습데이터 입력</h1>
 <%

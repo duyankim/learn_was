@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>AllviewDB.jsp</title>
-	<link rel="stylesheet" href="./styles/tableStyle.css">
+	<link rel="stylesheet" href="../styles/tableStyle.css">
 </head>
 <body>
 <h1>조회</h1>

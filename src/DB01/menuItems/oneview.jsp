@@ -5,7 +5,7 @@
 <html>
 <head>
 	<title>oneview.jsp</title>
-	<link rel="stylesheet" href="./styles/tableStyle.css">
+	<link rel="stylesheet" href="../styles/tableStyle.css">
 </head>
 <body>
 <%

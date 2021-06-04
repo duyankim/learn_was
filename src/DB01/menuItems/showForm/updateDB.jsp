@@ -4,7 +4,7 @@
 <html>
 <head>
 	<title>updateDB.jsp</title>
-	<link rel="stylesheet" href="./styles/tableStyle.css">
+	<link rel="stylesheet" href="../../styles/tableStyle.css">
 </head>
 <body>
 	<h1>레코드 수정</h1>
@@ -46,7 +46,7 @@ try {
 	out.println(e);
 }
 
- ResultSet rset = null;
+ResultSet rset = null;
 try {
 	rset = stmt.executeQuery("select * from examtable;");
 } catch (SQLException e) {
@@ -77,7 +77,7 @@ try {
 			if (request.getParameter("studentid").equals(studentid)) {
 				out.println("<tr id='result'>");
 					out.println("<td><p>");
-					out.println("<a href='oneview.jsp?name="+name+"&studentid=" + studentid+"'>" + name + "</a>");
+					out.println("<a href='/DB01/menuItems/oneview.jsp?name="+name+"&studentid=" + studentid+"'>" + name + "</a>");
 					out.println("</p></td>");
 					out.println("<td><p>" +studentid + "</p></td>");
 					out.println("<td><p>" +kor + "</p></td>");
@@ -87,7 +87,7 @@ try {
 			} else {
 				out.println("<tr>");
 					out.println("<td><p>");
-					out.println("<a href='oneview.jsp?name="+name+"&studentid=" + studentid+"'>" + name + "</a>");
+					out.println("<a href='/DB01/menuItems/oneview.jsp?name="+name+"&studentid=" + studentid+"'>" + name + "</a>");
 					out.println("</p></td>");
 					out.println("<td><p>" +studentid + "</p></td>");
 					out.println("<td><p>" +kor + "</p></td>");
@@ -103,19 +103,19 @@ try {
 	}
  }
  
- try {
+try {
 	rset.close();
 } catch (SQLException e) {
 	out.println(e);
 } catch (NullPointerException e1) {
 	out.println(e1);
 } 
- try {
+try {
 	stmt.close();
 } catch (SQLException e) {
 	out.println(e);
 } 
- try {
+try {
 	conn.close();
 } catch (SQLException e) {
 	out.println(e);

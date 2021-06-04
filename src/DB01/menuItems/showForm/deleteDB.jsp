@@ -3,45 +3,11 @@
 <%@ page import = "java.sql.*, javax.sql.*, java.io.*, java.net.*" %>
 <html>
 <head>
-<title>Insert title here</title>
+<title>deleteDB.jsp</title>
 	<script>
 		console.log("deleteDB.jsp");
 	</script>
-	<style>
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
-	body {
-		box-sizing: border-box;
-	}
-	
-	h1 {
-		font-family: 'Noto Sans KR', sans-serif;
-		color: #6807f9;
-	}
-
-	table {
-		border-collapse: collapse;
-		background-color: white;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-
-	th {
-		color: white;
-		height: 80px;
-		background-color: #6807f9;
-	}
-
-	td {
-		padding: 20px;
-		min-width: 100px;
-		min-height: 300px;
-		border: 1px solid #e0e5f6;
-	}
-	
-	tr {
-		height: 40px;
-	}
-	</style>
+	<link rel="stylesheet" href="../../styles/tableStyle.css">
 </head>
 <body>
 <h1>레코드 수정</h1>

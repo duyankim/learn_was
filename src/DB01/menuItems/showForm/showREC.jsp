@@ -4,7 +4,7 @@
 <html>
 <head>
 	<title>showREC.jsp</title>
-	<link rel="stylesheet" href="./styles/tableStyle.css">
+	<link rel="stylesheet" href="../../styles/tableStyle.css">
 </head>
 <body>
 	<h1>조회</h1>
@@ -118,6 +118,6 @@ try {
 	}
 %>
 	</form>
-	<script src="./script/form.js"></script>
+	<script src="../../script/form.js"></script>
 </body>
 </html>
