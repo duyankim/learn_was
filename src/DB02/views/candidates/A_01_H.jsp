@@ -15,7 +15,7 @@
         </tr>
         <tr>
             <td>
-                <form method="post" action="A_01_H.jsp">
+                <form method="post" action="A_02.jsp" id="A_01_Form">
                     기호: <input type="text" name="id" value="1" readonly>
                     이름: <input type="text" name="name" value="김일도" readonly>
                     <input type="submit" value="삭제">
@@ -24,7 +24,7 @@
         </tr>
         <tr>
             <td>
-                <form method="post" action="A_01_H.jsp">
+                <form method="post" action="A_02.jsp" id="A_01_Form">
                     기호: <input type="text" name="id" value="1" readonly>
                     이름: <input type="text" name="name" value="김이도" readonly>
                     <input type="submit" value="삭제">
@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <td>
-                <form method="post" action="A_01_H.jsp">
+                <form method="post" action="A_02.jsp" id="A_01_Form">
                     기호: <input type="text" name="id" value="1" readonly>
                     이름: <input type="text" name="name" value="김삼도" readonly>
                     <input type="submit" value="삭제">
@@ -42,7 +42,7 @@
         </tr>
         <tr>
             <td>
-                <form method="post" action="A_01_H.jsp">
+                <form method="post" action="A_02.jsp" id="A_01_Form">
                     기호: <input type="text" name="id" value="1" readonly>
                     이름: <input type="text" name="name" value="김사도" readonly>
                     <input type="submit" value="삭제">
@@ -51,12 +51,13 @@
         </tr>
         <tr>
             <td>
-                <form method="post" action="A_01_H.jsp">
+                <form method="post" action="A_03.jsp" name="A_01_Form" id="A_01_Form">
                     기호: <input type="text" name="id" value="">
                     이름: <input type="text" name="name" value="">
-                    <input type="submit" value="추가">
+                    <input type="submit" value="추가" onclick='checkName(document.A_01_Form.name, event)'>
             </td>
         </tr>
     </table>
+    <script src="../../script/form.js"></script>
 </body>
 </html>
