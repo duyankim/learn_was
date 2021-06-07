@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	<title>A_01.jsp</title>
+	<title>A_03.jsp</title>
 	<link rel="stylesheet" href="">
 </head>
 <body>
@@ -30,10 +30,10 @@
     
     String cTmp = request.getParameter("name");
 
-String cTmpHan = new String(cTmp.getBytes("8859_1"), "utf-8");
+    String cTmpHan = new String(cTmp.getBytes("8859_1"), "utf-8");
 
     String sql = "update hubo_table set " +
-        "name = '" + cTmpHan + "', " +
+        "name = '" + cTmpHan + "'" +
         " where id = " + request.getParameter("id");
 
     try {
