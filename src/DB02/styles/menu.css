@@ -35,3 +35,7 @@
 .arrowOpen {
     transform: rotate(-90deg);
 }
+
+.menuDisplayNone {
+    display: none;
+}
