@@ -1,5 +1,8 @@
 const toggleArrow = (icon) => {
-    const menus = document.querySelectorAll(".menus");
+    const menu1 = document.getElementById("menuDetail1");
+    const menu2 = document.getElementById("menuDetail2");
+    const menu3 = document.getElementById("menuDetail3");
+    const menus = [menu1, menu2, menu3];
     const menusStr = ["menu1", "menu2", "menu3"];
 
     if (icon.classList.contains("arrowOpen")) {
