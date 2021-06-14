@@ -1,0 +1,75 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A_01_H</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../../styles/title.css">
+    <link rel="stylesheet" href="../../styles/candidates.css">
+</head>
+
+<body>
+    <div class="title">
+        <div class="icon">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="subtitle">
+            <h1>후보등록</h1>
+            <p>후보명 입력</p>
+        </div>
+    </div>
+
+
+    <table>
+        <tr>
+            <td>
+                <form method="post" action="A_02.jsp" id="A_01_Form">
+                    기호: <input type="text" name="id" value="1" readonly>
+                    이름: <input type="text" name="name" value="김일도" readonly>
+                    <input type="submit" value="삭제" onclick="submitForm('delete')">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form method="post" action="A_02.jsp" id="A_01_Form">
+                    기호: <input type="text" name="id" value="2" readonly>
+                    이름: <input type="text" name="name" value="김이도" readonly>
+                    <input type="submit" value="삭제" onclick="submitForm('delete')">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form method="post" action="A_02.jsp" id="A_01_Form">
+                    기호: <input type="text" name="id" value="3" readonly>
+                    이름: <input type="text" name="name" value="김삼도" readonly>
+                    <input type="submit" value="삭제" onclick="submitForm('delete')">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form method="post" action="A_02.jsp" id="A_01_Form">
+                    기호: <input type="text" name="id" value="4" readonly>
+                    이름: <input type="text" name="name" value="김사도" readonly>
+                    <input type="submit" value="삭제" onclick="submitForm('delete')">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form method="post" action="A_03.jsp" name="A_01_Form" id="A_01_Form">
+                    기호: <input type="text" name="id" value="">
+                    이름: <input type="text" name="name" value="">
+                    <input type="submit" value="추가" onclick="checkNameAndUpdate(document.A_01_Form.name, event)">
+            </td>
+        </tr>
+    </table>
+    <script src="../../script/form.js"></script>
+</body>
+
+</html>
