@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B_01</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../../styles/vote.css">
+    <link rel="stylesheet" href="../../styles/title.css">
+</head>
+
+<body>
+    <div class="title">
+        <div class="icon">
+            <i class="fas fa-vote-yea"></i>
+        </div>
+        <div class="subtitle">
+            <h1>투표하기</h1>
+            <p>연령대를 선택해주세요</p>
+        </div>
+    </div>
+    <div class="voteSection">
+        <form method="post" action="B_02_H.jsp" name="B_01_Form">
+            <div class="voteContent">
+                <div class="voteHubo">
+                    <select name="choice" id="selectHubo">
+                        <option value="1">1 홍일동</option>
+                        <option value="2">2 홍이동</option>
+                        <option value="3">3 홍삼동</option>
+                        <option value="4">4 홍사동</option>
+                        <option value="5">5 홍오동</option>
+                    </select>
+                </div>
+                <div class="voteAge">
+                    <select name="age" id="selectAge">
+                        <option value="1">10대</option>
+                        <option value="2">20대</option>
+                        <option value="3">30대</option>
+                        <option value="4">40대</option>
+                        <option value="5">50대</option>
+                        <option value="6">60대</option>
+                        <option value="7">70대</option>
+                        <option value="8">80대</option>
+                        <option value="9">90대</option>
+                    </select>
+                </div>
+                <div class="voteBtn">
+                    <input type="submit" value="투표하기">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
