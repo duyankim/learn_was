@@ -21,54 +21,99 @@
             <p>후보명 입력</p>
         </div>
     </div>
-
-
-    <table>
-        <tr>
-            <td>
-                <form method="post" action="A_02.jsp" id="A_01_Form">
-                    기호: <input type="text" name="id" value="1" readonly>
-                    이름: <input type="text" name="name" value="김일도" readonly>
-                    <input type="submit" value="삭제" onclick="submitForm('delete')">
+    <div class="card">
+        <ul class="listCandidates">
+            <li class="listItem">
+                <div class="widgetImg">
+                    <img src="../../images/hubo11.png" alt="">
+                </div>
+                <form class="huboForm" method="post" action="A_02.jsp" id="A_01_Form">
+                    <div class="widgetContent">
+                        <div class="huboName">
+                            이름 : <input type="text" name="name" value="홍일동" readonly>
+                        </div>
+                        <div class="huboId">
+                            기호 : <input type="text" name="id" value="1" readonly>
+                        </div>
+                    </div>
+                    <div class="widgetRight">
+                        <input type="submit" value="삭제" onclick="submitForm('delete')">
+                    </div>
                 </form>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form method="post" action="A_02.jsp" id="A_01_Form">
-                    기호: <input type="text" name="id" value="2" readonly>
-                    이름: <input type="text" name="name" value="김이도" readonly>
-                    <input type="submit" value="삭제" onclick="submitForm('delete')">
+            </li>
+            <li class="listItem">
+                <div class="widgetImg">
+                    <img src="../../images/hubo2.png" alt="">
+                </div>
+                <form class="huboForm" method="post" action="A_02.jsp" id="A_01_Form">
+                    <div class="widgetContent">
+                        <div class="huboName">
+                            이름 : <input type="text" name="name" value="홍이동" readonly>
+                        </div>
+                        <div class="huboId">
+                            기호 : <input type="text" name="id" value="2" readonly>
+                        </div>
+                    </div>
+                    <div class="widgetRight">
+                        <input type="submit" value="삭제" onclick="submitForm('delete')">
+                    </div>
                 </form>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form method="post" action="A_02.jsp" id="A_01_Form">
-                    기호: <input type="text" name="id" value="3" readonly>
-                    이름: <input type="text" name="name" value="김삼도" readonly>
-                    <input type="submit" value="삭제" onclick="submitForm('delete')">
+            </li>
+            <li class="listItem">
+                <div class="widgetImg">
+                    <img src="../../images/hubo3.png" alt="">
+                </div>
+                <form class="huboForm" method="post" action="A_02.jsp" id="A_01_Form">
+                    <div class="widgetContent">
+                        <div class="huboName">
+                            이름 : <input type="text" name="name" value="홍삼동" readonly>
+                        </div>
+                        <div class="huboId">
+                            기호 : <input type="text" name="id" value="3" readonly>
+                        </div>
+                    </div>
+                    <div class="widgetRight">
+                        <input type="submit" value="삭제" onclick="submitForm('delete')">
+                    </div>
                 </form>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form method="post" action="A_02.jsp" id="A_01_Form">
-                    기호: <input type="text" name="id" value="4" readonly>
-                    이름: <input type="text" name="name" value="김사도" readonly>
-                    <input type="submit" value="삭제" onclick="submitForm('delete')">
+            </li>
+            <li class="listItem">
+                <div class="widgetImg">
+                    <img src="../../images/hubo4.png" alt="">
+                </div>
+                <form class="huboForm" method="post" action="A_02.jsp" id="A_01_Form">
+                    <div class="widgetContent">
+                        <div class="huboName">
+                            이름 : <input type="text" name="name" value="홍사동" readonly>
+                        </div>
+                        <div class="huboId">
+                            기호 : <input type="text" name="id" value="4" readonly>
+                        </div>
+                    </div>
+                    <div class="widgetRight">
+                        <input type="submit" value="삭제" onclick="submitForm('delete')">
+                    </div>
                 </form>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form method="post" action="A_03.jsp" name="A_01_Form" id="A_01_Form">
-                    기호: <input type="text" name="id" value="">
-                    이름: <input type="text" name="name" value="">
-                    <input type="submit" value="추가" onclick="checkNameAndUpdate(document.A_01_Form.name, event)">
-            </td>
-        </tr>
-    </table>
+            </li>
+            <li class="listItem">
+                <div class="widgetImg">
+                    <img src="../../images/hubo5.png" alt="">
+                </div>
+                <form class="huboForm" method="post" action="A_02.jsp" id="A_01_Form">
+                    <div class="widgetContent">
+                        <div class="huboName">
+                            이름 : <input type="text" name="name" value="">
+                        </div>
+                        <div class="huboId">
+                            기호 : <input type="text" name="id" value="">
+                        </div>
+                    </div>
+                    <div class="widgetRight">
+                        <input type="submit" value="추가" onclick="checkNameAndUpdate(document.A_01_Form.name, event)">                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
     <script src="../../script/form.js"></script>
 </body>
 

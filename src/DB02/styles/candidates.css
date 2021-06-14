@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.card {
+    flex: 1 1 auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.listCandidates {
+    width: 50%;
+    background-color: white;
+    padding: 18px;
+    margin: 0;
+}
+
+.listItem {
+    padding: 14px 18px;
+    border: 1px solid rgba(105, 170, 138, 0.08);
+    list-style: none;
+    display: flex;
+    
+    align-items: center;
+}
+
+.widgetLeft {
+    display: flex;
+}
+
+.widgetImg {
+    margin-right: 20px;
+}
+
+.widgetImg img {
+    border-radius: 50%;
+    width: 60px;
+}
+
+.huboForm {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+}
+
+.widgetContent {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+}
+
+.huboName, input[name=name] {
+    font-weight: 700;
+    margin-bottom: 3px;
+    color: rgb(90, 90, 90);
+}
+
+input[type=text] {
+    border: 1px solid #69AA8A;
+    height: 35px;
+    width: 200px;
+    margin-left: 10px;
+    padding: 6px 12px 6px 12px;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+.huboId, input[name=id] {
+    font-weight: 400;
+    color: rgba(90, 90, 90, 0.8);
+}
+
+.widgetRight input {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    height: 35px;
+    width: 60px;
+    border: none;
+    color: #ffffff;
+    margin: 0 8px 8px 0;
+    padding: 6px 12px 6px 12px;
+    border-radius: 4px;
+    transition: color 0.15s ease 0s;
+}
+
+input[value="삭제"] {
+    background-color: #69AA8A;
+}
+
+input[value="추가"] {
+    background-color: #FFB927;
+}
