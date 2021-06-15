@@ -1,58 +1,92 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%@ page contentType="text/html; charset=utf-8"%>
-<%@ page import = "java.sql.*, javax.sql.*, java.io.*, java.net.*" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="kr.ac.poll.kopo03.service.*, kr.ac.poll.kopo03.domain.*, kr.ac.poll.kopo03.dao.*" %>
+<%@ page import = "java.util.*, java.net.*" %>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>A_03.jsp</title>
-	<link rel="stylesheet" href="">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>A_01</title>
+    <link rel="stylesheet" 
+    	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="../../styles/title.css">
+    <link rel="stylesheet" href="../../styles/candidates.css">
 </head>
+
 <body>
-    <%
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-    } catch (ClassNotFoundException e) {
-        out.println(e);
-    } 
-     Connection conn = null;
-    try {
-        conn = DriverManager.getConnection("jdbc:mysql://localhost/kopoctc","root" , "kopoctc");
-    } catch (SQLException e) {
-        out.println(e);
-    }
-      
-     Statement stmt = null;
-    try {
-        stmt = conn.createStatement();
-    } catch (SQLException e1) {
-        out.println(e1);
-    } 
+    <div class="title">
+        <div class="icon">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="subtitle">
+            <h1>후보등록</h1>
+            <p>후보가 등록되었습니다.</p>
+        </div>
+    </div>
+    <div class="card">
+        <ul class="listCandidates">
     
-    String cTmp = request.getParameter("name");
-
-    String cTmpHan = new String(cTmp.getBytes("8859_1"), "utf-8");
-
-    String sql = "update hubo_table set " +
-        "name = '" + cTmpHan + "'" +
-        " where id = " + request.getParameter("id");
-
-    try {
-        stmt.executeUpdate(sql);
-    } catch (SQLException e) {
-        out.println(e);
+    <%
+    String name = request.getParameter("name");
+    String hanName = new String(name.getBytes("8859_1"), "utf-8");
+    CandidateService canService = new CandidateServiceImpl();
+    Candidate can = new Candidate(hanName);
+    canService.enroll(can);
+    
+    List<Candidate> data=canService.viewAll();
+    int endData = data.size();
+    
+    for (int i = 0; i < endData; i++) {
+    	out.println("<li class='listItem'>");
+    	out.println("<div class='widgetImg'>");
+    	out.println("<img src='../../images/hubo"+(i+1)+".png'>");
+    	out.println("</div>");
+    	out.println("<form class='huboForm' method='post' action='A_02.jsp' id='A_01_Form'>");
+    	out.println("<div class='widgetContent'>");
+    	out.println("<div class='huboName'>이름 : ");
+    	out.println("<input type='text' name='name' value='"+data.get(i).getName()+"' readonly>");
+    	out.println("</div>");
+    	out.println("<div class='huboId'>기호 : ");
+    	out.println("<input type='text' name='id' value="+data.get(i).getId() +" readonly>");
+    	out.println("</div>");
+    	out.println("</div>");
+    	out.println("<div class='widgetRight'>");
+    	out.println("<input type='submit' value='삭제' onclick='submitForm(\"delete\")'>");
+    	out.println("</div>");
+    	out.println("</form>");
+    	out.println("</li>");
     }
-    try {
-        stmt.close();
-    } catch (SQLException e) {
-        out.println(e);
-    } 
-     try {
-        conn.close();
-    } catch (SQLException e) {
-        out.println(e);
-    } 
-
     %>
-    <h3>후보등록 결과: 후보가 추가되었습니다.</h3>
+            <li class="listItem">
+                <div class="widgetImg">
+                    <img src='../../images/hubo<%=data.size()+1%>.png'>
+                </div>
+                <form class="huboForm" 
+                	  method="post" 
+                	  action="A_03.jsp" 
+                	  id="A_01_Form">
+                    <div class="widgetContent">
+                        <div class="huboName">
+                            이름 : 
+                            <input type="text" name="name" value="">
+                        </div>
+                        <div class="huboId">
+                            기호 : 
+                            <input type="text" name="id" value=<%=data.get(endData).getId()+1%>>
+                        </div>
+                    </div>
+                    <div class="widgetRight">
+                        <input type="submit" 
+                        	   value="추가" 
+                        	   onclick="checkNameAndUpdate(document.A_01_Form.name, event)">
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <script src="../../script/form.js"></script>
 </body>
+
 </html>
