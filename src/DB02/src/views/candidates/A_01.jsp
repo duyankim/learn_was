@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8">
 <title>A_01</title>
     <link rel="stylesheet" 
     	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -16,23 +16,31 @@
 </head>
 
 <body>
+    <%
+    CandidateService canService = new CandidateServiceImpl();
+    List<Candidate> data=canService.viewAll();
+    int endData = data.size();
+    int lastHuboId;
+    String desc;
+    
+    desc = endData == 0 ? "등록된 후보가 없습니다." : "후보명읍 입력해주세요.";
+    lastHuboId = endData < 1 ? 1 : data.get(endData-1).getId()+1;
+    %>
+
     <div class="title">
         <div class="icon">
             <i class="fas fa-user"></i>
         </div>
         <div class="subtitle">
             <h1>후보등록</h1>
-            <p>후보명 입력</p>
+            <p><%=desc %></p>
         </div>
     </div>
     <div class="card">
         <ul class="listCandidates">
-    
+
     <%
-    CandidateService canService = new CandidateServiceImpl();
-    List<Candidate> data=canService.viewAll();
-    
-    for (int i = 0; i < data.size(); i++) {
+    for (int i = 0; i < endData; i++) {
     	out.println("<li class='listItem'>");
     	out.println("<div class='widgetImg'>");
     	out.println("<img src='../../images/hubo"+(i+1)+".png'>");
@@ -52,6 +60,7 @@
     	out.println("</form>");
     	out.println("</li>");
     }
+    
     %>
             <li class="listItem">
                 <div class="widgetImg">
@@ -59,7 +68,7 @@
                 </div>
                 <form class="huboForm" 
                 	  method="post" 
-                	  action="A_02.jsp" 
+                	  action="A_03.jsp" 
                 	  id="A_01_Form">
                     <div class="widgetContent">
                         <div class="huboName">
@@ -68,7 +77,7 @@
                         </div>
                         <div class="huboId">
                             기호 : 
-                            <input type="text" name="id" value=<%=data.size()+1%>>
+                            <input type="text" name="id" value=<%=lastHuboId%>>
                         </div>
                     </div>
                     <div class="widgetRight">
