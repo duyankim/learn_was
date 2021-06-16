@@ -13,7 +13,7 @@
 </head>
 <body>
 	<%
-    CandidateService canService = new CandidateServiceImpl();
+    CandidateService canService = CandidateServiceImpl.getInstance();
     List<Candidate> data=canService.viewAll();
 	%>
     <div class="title">
