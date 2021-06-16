@@ -35,8 +35,11 @@
     canService.resign(can);
     
     List<Candidate> data=canService.viewAll();
+    int endData = data.size();
+    int lastHuboId;
+    lastHuboId = endData < 1 ? 1 : data.get(endData-1).getId()+1;
     
-    for (int i = 0; i < data.size(); i++) {
+    for (int i = 0; i < endData; i++) {
     	out.println("<li class='listItem'>");
     	out.println("<div class='widgetImg'>");
     	out.println("<img src='../../images/hubo"+(i+1)+".png'>");
@@ -56,6 +59,7 @@
     	out.println("</form>");
     	out.println("</li>");
     }
+    
     %>
             <li class="listItem">
                 <div class="widgetImg">
@@ -63,7 +67,7 @@
                 </div>
                 <form class="huboForm" 
                 	  method="post" 
-                	  action="A_03.jsp" 
+                	  action="A_02.jsp" 
                 	  id="A_01_Form">
                     <div class="widgetContent">
                         <div class="huboName">
@@ -72,7 +76,7 @@
                         </div>
                         <div class="huboId">
                             기호 : 
-                            <input type="text" name="id" value=<%=data.size()+1%>>
+                            <input type="text" name="id" value=<%=lastHuboId%>>
                         </div>
                     </div>
                     <div class="widgetRight">
