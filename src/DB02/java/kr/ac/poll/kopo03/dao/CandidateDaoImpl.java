@@ -6,6 +6,18 @@ import java.util.*;
 import kr.ac.poll.kopo03.domain.Candidate;
 
 public class CandidateDaoImpl implements CandidateDao {
+	private static CandidateDaoImpl instance = new CandidateDaoImpl();
+	
+	private CandidateDaoImpl() {
+		
+	}
+	
+	public static CandidateDaoImpl getInstance() {
+		if (instance == null) {
+			instance = new CandidateDaoImpl();
+		}
+		return instance; 
+	}
 
 	@Override
 	public Candidate save(String name) throws SQLException {

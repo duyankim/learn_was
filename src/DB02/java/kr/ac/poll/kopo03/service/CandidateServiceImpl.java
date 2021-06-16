@@ -8,7 +8,20 @@ import kr.ac.poll.kopo03.dao.CandidateDaoImpl;
 import kr.ac.poll.kopo03.domain.Candidate;
 
 public class CandidateServiceImpl implements CandidateService{
-	CandidateDaoImpl canDao = new CandidateDaoImpl();
+	CandidateDaoImpl canDao = CandidateDaoImpl.getInstance();
+	
+	private static CandidateServiceImpl instance = new CandidateServiceImpl();
+	
+	private CandidateServiceImpl() {
+		
+	}
+	
+	public static CandidateServiceImpl getInstance() {
+		if (instance == null) {
+			instance = new CandidateServiceImpl();
+		}
+		return instance; 
+	}
 	
 	@Override
 	public int enroll(Candidate can) {

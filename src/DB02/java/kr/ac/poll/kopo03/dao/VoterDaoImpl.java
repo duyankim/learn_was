@@ -7,6 +7,18 @@ import kr.ac.poll.kopo03.domain.Candidate;
 import kr.ac.poll.kopo03.domain.Voter;
 
 public class VoterDaoImpl implements VoterDao {
+	private static VoterDaoImpl instance = new VoterDaoImpl();
+	
+	private VoterDaoImpl() {
+		
+	}
+	
+	public static VoterDaoImpl getInstance() {
+		if (instance == null) {
+			instance = new VoterDaoImpl();
+		}
+		return instance; 
+	}
 	
 	@Override
 	public Voter save(Voter vote) {
