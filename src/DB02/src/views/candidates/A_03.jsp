@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8">
 <title>A_01</title>
     <link rel="stylesheet" 
     	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -29,14 +29,16 @@
         <ul class="listCandidates">
     
     <%
+    request.setCharacterEncoding("utf-8");
     String name = request.getParameter("name");
-    String hanName = new String(name.getBytes("8859_1"), "utf-8");
     CandidateService canService = new CandidateServiceImpl();
-    Candidate can = new Candidate(hanName);
+    Candidate can = new Candidate(name);
     canService.enroll(can);
     
     List<Candidate> data=canService.viewAll();
     int endData = data.size();
+    int lastHuboId;
+    lastHuboId = endData < 1 ? 1 : data.get(endData-1).getId()+1;
     
     for (int i = 0; i < endData; i++) {
     	out.println("<li class='listItem'>");
@@ -58,6 +60,7 @@
     	out.println("</form>");
     	out.println("</li>");
     }
+   
     %>
             <li class="listItem">
                 <div class="widgetImg">
@@ -70,11 +73,11 @@
                     <div class="widgetContent">
                         <div class="huboName">
                             이름 : 
-                            <input type="text" name="name" value="">
+                            <input type="text" name="name">
                         </div>
                         <div class="huboId">
                             기호 : 
-                            <input type="text" name="id" value=<%=data.get(endData).getId()+1%>>
+                            <input type="text" name="id" value=<%=lastHuboId%>>
                         </div>
                     </div>
                     <div class="widgetRight">
