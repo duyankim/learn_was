@@ -3,8 +3,22 @@ package kr.ac.poll.kopo03.domain;
 public class Voter {
     private int id;
     private int age;
+    private Candidate candidate;
 
-    public int getId() {
+	public Voter(int age, Candidate candidate) {
+		this.candidate = candidate;
+		this.age = age;
+	}
+    
+    public Candidate getCandidate() {
+		return candidate;
+	}
+
+	public void setCandidate(Candidate candidate) {
+		this.candidate = candidate;
+	}
+
+	public int getId() {
         return id;
     }
 
