@@ -1,8 +1,11 @@
 package kr.ac.poll.kopo03.domain;
 
+import java.util.List;
+
 public class Candidate {
     private int id;
     private String name;
+    private List<Voter> votes;
     
 	public Candidate(int id, String name) {
 		this.id = id;
@@ -32,4 +35,12 @@ public class Candidate {
     public void setName(String name) {
         this.name = name;
     }
+
+	public List<Voter> getVotes() {
+		return votes;
+	}
+
+	public void setVotes(List<Voter> votes) {
+		this.votes = votes;
+	}
 }
