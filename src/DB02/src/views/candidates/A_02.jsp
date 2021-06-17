@@ -30,7 +30,7 @@
     
     <%
     String id = request.getParameter("id");
-    CandidateService canService = new CandidateServiceImpl();
+    CandidateService canService = CandidateServiceImpl.getInstance();
     Candidate can = new Candidate(Integer.parseInt(id));
     canService.resign(can);
     

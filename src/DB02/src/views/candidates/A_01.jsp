@@ -17,13 +17,13 @@
 
 <body>
     <%
-    CandidateService canService = new CandidateServiceImpl();
-    List<Candidate> data=canService.viewAll();
+    CandidateService canService = CandidateServiceImpl.getInstance();
+    List<Candidate> data = canService.viewAll();
     int endData = data.size();
     int lastHuboId;
     String desc;
     
-    desc = endData == 0 ? "등록된 후보가 없습니다." : "후보명읍 입력해주세요.";
+    desc = endData == 0 ? "등록된 후보가 없습니다." : "후보명을 입력해주세요.";
     lastHuboId = endData < 1 ? 1 : data.get(endData-1).getId()+1;
     %>
 

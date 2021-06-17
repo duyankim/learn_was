@@ -31,7 +31,7 @@
     <%
     request.setCharacterEncoding("utf-8");
     String name = request.getParameter("name");
-    CandidateService canService = new CandidateServiceImpl();
+    CandidateService canService = CandidateServiceImpl.getInstance();
     Candidate can = new Candidate(name);
     canService.enroll(can);
     
