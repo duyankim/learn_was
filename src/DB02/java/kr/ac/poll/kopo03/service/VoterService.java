@@ -6,7 +6,8 @@ import kr.ac.poll.kopo03.domain.Candidate;
 import kr.ac.poll.kopo03.domain.Voter;
 
 public interface VoterService {
-	Voter vote(Voter voter);
-	 int[] analyzeOne(Candidate can);
-	 List<Integer> analyzeAll();
+	Voter vote(int age, int huboId) throws Exception;
+	 int[] singleCandidateVoteAges(Candidate can) throws Exception;
+	 int[]  allCandidateVotes() throws Exception;
+	 double calcVoteRate(int votes, int total) throws Exception;
 }
