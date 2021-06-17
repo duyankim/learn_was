@@ -15,18 +15,11 @@
 </head>
 <body>
 	<%
-    request.setCharacterEncoding("utf-8");
-  
     String[] hubo = request.getParameterValues("voteHubo");
     String[] age = request.getParameterValues("voteAge");
-    String huboName = hubo[0].split(" ")[1];
-    int voterAge = Integer.parseInt(age[0]);
+    VoterService voteService = VoterServiceImpl.getInstance();
+    voteService.vote(Integer.parseInt(age[0]), Integer.parseInt(hubo[0]));
     
-	VoterService voteService = new VoterService();
-	Candidate can = new Candidate(huboName);
-	Voter voter = new Voter(voterAge, can);
-	voteService.vote(voter);
-	
 	%>
     <div class="title">
         <div class="icon">

@@ -33,7 +33,7 @@
    	<%
     for (int i = 0; i < data.size(); i++) {
     	out.println("<option value='"+ data.get(i).getId() +"'>" 
-    				+ data.get(i).getId() + " " + data.get(i).getName() + "</option>");
+    				+ data.get(i).getId() + ":" + data.get(i).getName() + "</option>");
     }
    	%>
                     </select>
