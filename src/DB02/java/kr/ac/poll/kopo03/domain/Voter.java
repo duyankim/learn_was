@@ -4,13 +4,27 @@ public class Voter {
     private int id;
     private int age;
     private Candidate candidate;
+    
+    public Voter() {
+    	
+    }
+    
+	public Voter(Candidate candidate) {
+		this.candidate = candidate;
+	}
 
 	public Voter(int age, Candidate candidate) {
-		this.candidate = candidate;
 		this.age = age;
+		this.candidate = candidate;
 	}
     
-    public Candidate getCandidate() {
+    public Voter(int id, int age, Candidate candidate) {
+		this.id = id;
+		this.age = age;
+		this.candidate = candidate;
+	}
+
+	public Candidate getCandidate() {
 		return candidate;
 	}
 
