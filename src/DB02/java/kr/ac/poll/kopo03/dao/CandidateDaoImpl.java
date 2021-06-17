@@ -36,7 +36,7 @@ public class CandidateDaoImpl implements CandidateDao {
 
 		try {
 			conn = DriverManager.getConnection(
-					"jdbc:mysql://192.168.23.27:3306/kopoctc", 
+					"jdbc:mysql://192.168.23.27:3306/pollsystem", 
 					"root", 
 					"kopoctc");
 			pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -60,6 +60,7 @@ public class CandidateDaoImpl implements CandidateDao {
 	@Override
 	public void delete(Candidate can) {
 		String sql = "delete from hubo_table where id = ?";
+		String sql2 = "delete from tupyo_table where huboId = ?";
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -68,22 +69,31 @@ public class CandidateDaoImpl implements CandidateDao {
 		}
 
 		Connection conn = null;
+		PreparedStatement pstmt2 = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
 		try {
 			conn = DriverManager.getConnection(
-					"jdbc:mysql://192.168.23.27:3306/kopoctc", 
+					"jdbc:mysql://192.168.23.27:3306/pollsystem", 
 					"root", 
 					"kopoctc");
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(1, can.getId());
+			pstmt2.executeUpdate();
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, can.getId());
-
 			pstmt.executeUpdate();
 
 		} catch (Exception e1) {
 			throw new IllegalStateException(e1);
 		} finally {
+			try {
+				pstmt2.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			close(conn, pstmt, rset);
 		}
 	}
@@ -104,7 +114,7 @@ public class CandidateDaoImpl implements CandidateDao {
 
 		try {
 			conn = DriverManager.getConnection(
-					"jdbc:mysql://192.168.23.27:3306/kopoctc", 
+					"jdbc:mysql://192.168.23.27:3306/pollsystem", 
 					"root", 
 					"kopoctc");
 			pstmt = conn.prepareStatement(sql);
@@ -137,23 +147,58 @@ public class CandidateDaoImpl implements CandidateDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		Candidate can;
 
 		try {
 			conn = DriverManager.getConnection(
-					"jdbc:mysql://192.168.23.27:3306/kopoctc", 
+					"jdbc:mysql://192.168.23.27:3306/pollsystem", 
 					"root", 
 					"kopoctc");
 			pstmt = conn.prepareStatement(sql);
-
 			rset = pstmt.executeQuery();
 			
-			List<Candidate> candidates = new ArrayList<>();
+			List<Candidate> candidates = new ArrayList<Candidate>();
 			while(rset.next()) {
-				Candidate can = new Candidate(rset.getInt("id"), rset.getString("name"));
+				can = new Candidate(rset.getInt("id"), rset.getString("name"));
 				candidates.add(can);
 			}
 			return candidates;
 		} catch (Exception e1) {
+			e1.printStackTrace();
+			throw new IllegalStateException(e1);
+		} finally {
+			close(conn, pstmt, rset);
+		}
+	}
+	
+	public List<String> selectAllNames() {
+		String sql = "select name from hubo_table";
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		try {
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://192.168.23.27:3306/pollsystem", 
+					"root", 
+					"kopoctc");
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			List<String> names = new ArrayList<String>();
+			while(rset.next()) {
+				names.add(rset.getString("name"));
+			}
+			return names;
+		} catch (Exception e1) {
+			e1.printStackTrace();
 			throw new IllegalStateException(e1);
 		} finally {
 			close(conn, pstmt, rset);
