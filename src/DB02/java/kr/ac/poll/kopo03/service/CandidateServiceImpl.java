@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import kr.ac.poll.kopo03.dao.CandidateDaoImpl;
+import kr.ac.poll.kopo03.dao.VoterDaoImpl;
 import kr.ac.poll.kopo03.domain.Candidate;
 
 public class CandidateServiceImpl implements CandidateService{
@@ -52,8 +53,22 @@ public class CandidateServiceImpl implements CandidateService{
 		return canDao.selectAll();
 	}
 	
+	public String allCandidateNames() {
+		List<String> cans = canDao.selectAllNames();
+		String names = "['" + String.join("', '", cans) + "']";
+		return names;
+	}
+	
 	@Override
 	public Optional<Candidate> viewOne(int id) {
 		return canDao.selectOne(id);
+	}
+	
+	public Candidate setVotersList(Candidate can) {
+		VoterDaoImpl voteDao = VoterDaoImpl.getInstance();
+		if (voteDao.votersListOfOneCandidate(can) != null) {
+			can.setVotes(voteDao.votersListOfOneCandidate(can));
+		}
+		return can;
 	}
 } 
