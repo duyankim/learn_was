@@ -34,7 +34,7 @@ function checkNameAndUpdate(txt, event) {
     const regex = new RegExp(/^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/);
     
     checkName(txt, event);
-	if (regex.test(str) && str.length < 20) {
+	if (regex.test(str) && str.length < 20 && str.length > 0) {
         submitForm('update');
     }
 };
