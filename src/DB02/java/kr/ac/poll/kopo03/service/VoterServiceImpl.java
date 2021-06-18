@@ -1,5 +1,6 @@
 package kr.ac.poll.kopo03.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,8 +33,9 @@ public class VoterServiceImpl implements VoterService {
 	}
 	
 	@Override
-	public int[] singleCandidateVoteAges(Candidate can) {
-		return voteDao.selectOneCandidateAges(can);
+	public String singleCandidateVoteAges(int id) {
+		Candidate can = new Candidate(id);
+		return Arrays.toString(voteDao.selectOneCandidateAges(can));
 	}
 	
 	@Override
@@ -50,7 +52,7 @@ public class VoterServiceImpl implements VoterService {
 	public double calcVoteRate(int votes, int total) throws Exception {
 		return votes / total * 100.0;
 	}
-	
+	//인터페이스에 추가할 것
 	 public double voteRateOfOneCandidate(Candidate can) {
 		 double voteRate = 0;
 		 try {
@@ -60,7 +62,7 @@ public class VoterServiceImpl implements VoterService {
 		}
 		return voteRate;
 	 }
-	 
+	//인터페이스에 추가할 것
 	 public double[] voteAgeRateOfOneCandidate(Candidate can) {
 		 double[] ageRate = new double[9];
 		 int i;
@@ -74,5 +76,16 @@ public class VoterServiceImpl implements VoterService {
 		 }
 		 return ageRate;
 	 }
+
+	@Override
+	public int totalVotes() throws Exception {
+		return voteDao.totalVotesCntOfAllCandidates();
+	}
+
+	@Override
+	public int oneCandidateVotes(int id, String name) throws Exception {
+		Candidate can = new Candidate(id, name);
+		return voteDao.totalVotesCntOfOneCandidate(can);
+	}
 
 }
