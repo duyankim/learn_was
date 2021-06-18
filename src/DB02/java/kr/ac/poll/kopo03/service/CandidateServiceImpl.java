@@ -26,19 +26,12 @@ public class CandidateServiceImpl implements CandidateService{
 	
 	@Override
 	public int enroll(Candidate can) {
-		validateDuplicateCandidate(can);
 		try {
 			canDao.save(can.getName());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return can.getId();
-	}
-	
-	public void validateDuplicateCandidate (Candidate can) {
-		canDao.selectOne(can.getId()).ifPresent(c -> {
-			throw new IllegalStateException("이미 존재하는 후보입니다.");
-		});
 	}
 	
 	@Override
@@ -52,11 +45,15 @@ public class CandidateServiceImpl implements CandidateService{
 	public List<Candidate> viewAll() {
 		return canDao.selectAll();
 	}
-	
+	// DAO레벨로 옮길 것
 	public String allCandidateNames() {
 		List<String> cans = canDao.selectAllNames();
 		String names = "['" + String.join("', '", cans) + "']";
 		return names;
+	}
+	// DAO레벨로 옮길 것
+	public List<String> allCandidateNamesList() {
+		return canDao.selectAllNames();
 	}
 	
 	@Override
@@ -64,11 +61,4 @@ public class CandidateServiceImpl implements CandidateService{
 		return canDao.selectOne(id);
 	}
 	
-	public Candidate setVotersList(Candidate can) {
-		VoterDaoImpl voteDao = VoterDaoImpl.getInstance();
-		if (voteDao.votersListOfOneCandidate(can) != null) {
-			can.setVotes(voteDao.votersListOfOneCandidate(can));
-		}
-		return can;
-	}
 } 
