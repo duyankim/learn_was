@@ -17,8 +17,6 @@
 				src="menu.html">
 		</iframe>
 		<iframe id="contentSection"
-		
-				scrolling="no"
 				name="contentFrame"
 				src="./views/candidates/A_01.jsp">
 		</iframe>

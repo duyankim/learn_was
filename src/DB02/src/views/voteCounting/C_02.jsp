@@ -17,45 +17,46 @@
     </script>
 </head>
 <body>
-	<% 
-	VoterServiceImpl v = VoterServiceImpl.getInstance();
-	int[] voteResult = v.allCandidateVotes();
-	String result = Arrays.toString(voteResult);
-	
+	<%
 	CandidateServiceImpl c = CandidateServiceImpl.getInstance();
-	String names = c.allCandidateNames();
+	VoterServiceImpl v = VoterServiceImpl.getInstance();
+	
+	List<Candidate> namesList = c.viewAll();
+	String index = request.getParameter("huboIndex");
+	String name = namesList.get(Integer.parseInt(index)).getName();
+	int id = namesList.get(Integer.parseInt(index)).getId();	
+	String voteAges= v.singleCandidateVoteAges(id);
+	
 	int totalVotes = v.totalVotes();
-
+	int totalVotesOfThisCandidate = v.oneCandidateVotes(id, name);
 	%>
     <div class="title">
         <div class="icon">
             <i class="fas fa-chart-bar"></i>
         </div>
         <div class="subtitle">
-            <h1>후보별 득표 결과</h1>
-            <p>전체 투표수: <%= totalVotes %>표</p>
+            <h1><%= name %> 후보의 연령별 득표수</h1>
+            <p>전체 투표수 <%= totalVotes %>표 중 <%= totalVotesOfThisCandidate%>표 득표</p>
         </div>
     </div>
     <div id="chartContainer">
-    	<form method="post" action="C_02.jsp" id="C_01_Form">
-    		<input type="text" name="huboIndex" id="huboIndex">
-    	</form>
         <canvas id="chart"></canvas>
     </div>
 
     <script>
-    const hubo = <%= names%>;
-    const voteResult = <%= result%>;
-
+	const voteResult = <%= voteAges %>;
+	const age = [
+        '10대', '20대', '30대', '40대', '50대', '60대', '70대', '80대', '90대'
+        ];
     const ctx = document.getElementById("chart");
-    const doughnutChart = (ctx, hubo, voteResult) => {
+    const doughnutChart = (ctx, age, voteResult) => {
     	  const data = {
-    	    labels: hubo,
+    	    labels: age,
     	    datasets: [{
     	      label: 'poll anaylsis',
     	      data: voteResult,
     	      backgroundColor: [
-    	          '#488f31', '#75a760', '#9fc08f', '#c8d8bf', '#f1f1f1', '#f1c6c6', '#ec9c9d', '#e27076', '#de425b'
+    	    	  '#488f31', '#75a760', '#9fc08f', '#c8d8bf', '#f1f1f1', '#f1c6c6', '#ec9c9d', '#e27076', '#de425b'
     	          ],
     	      hoverBackgroundColor: [
     	          '#7097e1', '#4dd6a7', '#eb6886'
@@ -65,7 +66,7 @@
     	  };
 
     	  const options = {
-    	    reponsive: true,
+    	    reponsive: false,
     	    legend: {
     	    	position: 'top'
     	    },
@@ -78,13 +79,11 @@
     	        animateRotate: true
     	    },
     	    onClick: function(event, item){
-    	        const clickedHubo = item[0].index;
-    	        const huboData = this.data.datasets[0].data[clickedHubo];
-    	        const form = document.getElementById("C_01_Form");
-    	        const input = document.getElementById("huboIndex");
-    	        input.value = clickedHubo;
-			    form.submit();
-    	    },
+    	      const clickedHubo = item[0].index;
+    	      const huboData = this.data.datasets[0].data[clickedHubo];
+			  const form = document.getElementById("chartForm");
+			  form.submit();
+    	    }
     	  }
 
     	  const config = {
@@ -96,8 +95,8 @@
     	  let myChart = new Chart(ctx, config);
     	}
 
-    	doughnutChart(ctx, hubo, voteResult);
-    
+    	doughnutChart(ctx, age, voteResult);
+
     </script>
 </body>
 </html>
