@@ -53,7 +53,7 @@ public class VoterDaoImpl implements VoterDao {
 	}
 	@Override
 	public int[] selectOneCandidateAges(Candidate can) {		
-		String sql = "select count(age) as cnt from tupyo_table where huboId = ? group by age order by age";
+		String sql = "select age, count(age) as cnt from tupyo_table where huboId = ? group by age order by age";
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -77,10 +77,8 @@ public class VoterDaoImpl implements VoterDao {
 			
 			int[] voteAgeCnt = new int[9];
 			while(rset.next()) {
-				for (int cnt : voteAgeCnt) {
-					cnt = rset.getInt("cnt");
-				}
-			}
+				voteAgeCnt[rset.getInt("age")-1] = rset.getInt("cnt");
+			}			
 			return voteAgeCnt;
 		} catch (Exception e1) {
 			throw new IllegalStateException("존재하지 않는 후보입니다.");
