@@ -1,0 +1,14 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#chartContainer {
+    margin: 30px;
+    padding: 30px;
+    width: 40vw;
+}
+
+form, input {
+	display: none;
+}
