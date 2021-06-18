@@ -3,6 +3,7 @@
 <%@ page import="kr.ac.poll.kopo03.service.*, kr.ac.poll.kopo03.domain.*, kr.ac.poll.kopo03.dao.*" %>
 <%@ page import = "java.util.*, java.net.*" %>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -17,7 +18,7 @@
 
 <body>
     <%
-    CandidateService canService = CandidateServiceImpl.getInstance();
+    CandidateService canService = CandidateServiceImpl.getInstance();  		
     List<Candidate> data = canService.viewAll();
     int endData = data.size();
     int lastHuboId;
